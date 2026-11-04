@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Settings window. Notifications, autostart and opening links are driven from Rust commands.",
+  "windows": ["settings"],
+  "permissions": ["core:default"]
+}
