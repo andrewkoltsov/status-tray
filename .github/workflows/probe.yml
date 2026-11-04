@@ -6,33 +6,26 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch candidate cloud status endpoints
+      - name: Dump cloud status payloads
         shell: python
         run: |
-          import urllib.request
-          urls = [
-            "https://status.cloud.google.com/incidents.json",
-            "https://status.cloud.google.com/products.json",
-            "https://health.aws.amazon.com/public/currentevents",
-            "https://status.aws.amazon.com/rss/all.rss",
-            "https://status.aws.amazon.com/rss/ec2-us-east-1.rss",
-            "https://azure.status.microsoft/en-us/status/feed/",
-            "https://rssfeed.azure.status.microsoft/en-us/status/feed/",
-          ]
-          for u in urls:
-              print("=" * 20, u)
-              try:
-                  req = urllib.request.Request(u, headers={"User-Agent": "status-tray-probe"})
-                  with urllib.request.urlopen(req, timeout=20) as r:
-                      raw = r.read()
-                      print("HTTP", r.status, "| type:", r.headers.get("Content-Type"), "| bytes:", len(raw), "| final:", r.geturl())
-                  for enc in ("utf-8", "utf-16"):
-                      try:
-                          txt = raw.decode(enc); print("decoded as", enc); break
-                      except UnicodeDecodeError:
-                          continue
-                  else:
-                      txt = raw.decode("utf-8", "replace")
-                  print(txt[:2500])
-              except Exception as e:
-                  print("FAIL", type(e).__name__, e)
+          import json, urllib.request
+          def get(u):
+              req = urllib.request.Request(u, headers={"User-Agent": "status-tray-probe"})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return r.read()
+          gcp = json.loads(get("https://status.cloud.google.com/incidents.json"))
+          print("GCP_TOTAL", len(gcp))
+          print("GCP_KEYS", sorted(gcp[0].keys()))
+          print("GCP_OPEN", json.dumps([i for i in gcp if not i.get("end")]))
+          sample = dict(gcp[0]); sample["updates"] = sample["updates"][:2]
+          for u in sample["updates"]: u["text"] = u["text"][:300]
+          print("GCP_CLOSED_SAMPLE", json.dumps(sample))
+          print("GCP_ENUMS", json.dumps({k: sorted({str(i.get(k)) for i in gcp}) for k in ("severity", "status_impact")}))
+          raw = get("https://health.aws.amazon.com/public/currentevents")
+          aws = json.loads(raw.decode("utf-16"))
+          for e in aws:
+              for l in e.get("event_log", []): l["message"] = l["message"][:200]
+          print("AWS_TOTAL", len(aws))
+          print("AWS_FULL", json.dumps(aws))
+          print("AZURE_FULL", get("https://azure.status.microsoft/en-us/status/feed/").decode())
