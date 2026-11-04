@@ -1,0 +1,38 @@
+name: Probe endpoints
+on:
+  push:
+    branches: [probe-endpoints]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch candidate cloud status endpoints
+        shell: python
+        run: |
+          import urllib.request
+          urls = [
+            "https://status.cloud.google.com/incidents.json",
+            "https://status.cloud.google.com/products.json",
+            "https://health.aws.amazon.com/public/currentevents",
+            "https://status.aws.amazon.com/rss/all.rss",
+            "https://status.aws.amazon.com/rss/ec2-us-east-1.rss",
+            "https://azure.status.microsoft/en-us/status/feed/",
+            "https://rssfeed.azure.status.microsoft/en-us/status/feed/",
+          ]
+          for u in urls:
+              print("=" * 20, u)
+              try:
+                  req = urllib.request.Request(u, headers={"User-Agent": "status-tray-probe"})
+                  with urllib.request.urlopen(req, timeout=20) as r:
+                      raw = r.read()
+                      print("HTTP", r.status, "| type:", r.headers.get("Content-Type"), "| bytes:", len(raw), "| final:", r.geturl())
+                  for enc in ("utf-8", "utf-16"):
+                      try:
+                          txt = raw.decode(enc); print("decoded as", enc); break
+                      except UnicodeDecodeError:
+                          continue
+                  else:
+                      txt = raw.decode("utf-8", "replace")
+                  print(txt[:2500])
+              except Exception as e:
+                  print("FAIL", type(e).__name__, e)
