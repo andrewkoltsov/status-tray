@@ -1,0 +1,43 @@
+name: Service request
+description: Ask for a status page to be added to the catalog
+title: "[service] "
+labels: ["service-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! The fastest way is a PR adding one entry to `services.json`
+        (see the README), but an issue works too.
+  - type: input
+    id: name
+    attributes:
+      label: Service name
+      placeholder: GitHub
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Status page URL
+      description: The public status page, e.g. https://www.githubstatus.com
+      placeholder: https://
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Status page software
+      description: If unsure, pick "Not sure".
+      options:
+        - Atlassian Statuspage (statuspage)
+        - Other (RSS/Atom, incident.io, custom)
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: api
+    attributes:
+      label: Does this URL work?
+      description: For Statuspage sites, paste the result of opening `<url>/api/v2/summary.json` (e.g. "valid JSON").
+    validations:
+      required: false
