@@ -1,14 +1,17 @@
 {
   "version": 1,
   "services": [
-    { "id": "github", "name": "GitHub", "type": "statuspage", "url": "https://www.githubstatus.com" },
-    { "id": "cloudflare", "name": "Cloudflare", "type": "statuspage", "url": "https://www.cloudflarestatus.com" },
-    { "id": "claude", "name": "Claude (Anthropic)", "type": "statuspage", "url": "https://status.claude.com" },
-    { "id": "bitbucket", "name": "Bitbucket", "type": "statuspage", "url": "https://bitbucket.status.atlassian.com" },
-    { "id": "discord", "name": "Discord", "type": "statuspage", "url": "https://discordstatus.com" },
-    { "id": "npm", "name": "npm", "type": "statuspage", "url": "https://status.npmjs.org" },
-    { "id": "vercel", "name": "Vercel", "type": "statuspage", "url": "https://www.vercel-status.com" },
-    { "id": "digitalocean", "name": "DigitalOcean", "type": "statuspage", "url": "https://status.digitalocean.com" },
-    { "id": "circleci", "name": "CircleCI", "type": "statuspage", "url": "https://status.circleci.com" }
+    {"id": "github", "name": "GitHub", "type": "statuspage", "url": "https://www.githubstatus.com"},
+    {"id": "cloudflare", "name": "Cloudflare", "type": "statuspage", "url": "https://www.cloudflarestatus.com"},
+    {"id": "claude", "name": "Claude (Anthropic)", "type": "statuspage", "url": "https://status.claude.com"},
+    {"id": "bitbucket", "name": "Bitbucket", "type": "statuspage", "url": "https://bitbucket.status.atlassian.com"},
+    {"id": "discord", "name": "Discord", "type": "statuspage", "url": "https://discordstatus.com"},
+    {"id": "npm", "name": "npm", "type": "statuspage", "url": "https://status.npmjs.org"},
+    {"id": "vercel", "name": "Vercel", "type": "statuspage", "url": "https://www.vercel-status.com"},
+    {"id": "digitalocean", "name": "DigitalOcean", "type": "statuspage", "url": "https://status.digitalocean.com"},
+    {"id": "circleci", "name": "CircleCI", "type": "statuspage", "url": "https://status.circleci.com"},
+    {"id": "openai", "name": "OpenAI", "type": "statuspage", "url": "https://status.openai.com"},
+    {"id": "linear", "name": "Linear", "type": "statuspage", "url": "https://linearstatus.com"},
+    {"id": "sentry", "name": "Sentry", "type": "statuspage", "url": "https://status.sentry.io"}
   ]
 }
