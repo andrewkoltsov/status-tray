@@ -7,6 +7,7 @@ fn svc(id: &str, ty: &str, url: &str) -> Service {
         name: id.into(),
         service_type: ty.into(),
         url: url.into(),
+        params: Default::default(),
     }
 }
 
@@ -90,4 +91,55 @@ fn rejects_unsupported_version() {
     let mut c = catalog(vec![]);
     c.version = 2;
     assert!(c.validate(&known_types()).is_err());
+}
+
+fn with_params(ty: &str, params: serde_json::Value) -> Service {
+    let mut s = svc("a", ty, "https://a.example.com");
+    s.params = params.as_object().unwrap().clone();
+    s
+}
+
+#[test]
+fn params_default_to_empty_and_are_optional_in_json() {
+    let c = Catalog::parse(
+        r#"{"version":1,"services":[{"id":"a","name":"A","type":"statuspage","url":"https://a.example.com"}]}"#,
+    )
+    .unwrap();
+    assert!(c.services[0].params.is_empty());
+    assert!(!serde_json::to_string(&c).unwrap().contains("params"));
+}
+
+#[test]
+fn known_types_include_cloud_providers() {
+    let t = known_types();
+    for ty in ["statuspage", "google-cloud", "aws-health", "rss-active"] {
+        assert!(t.contains(&ty), "{ty} missing");
+    }
+}
+
+#[test]
+fn accepts_valid_params() {
+    let c = catalog(vec![with_params(
+        "google-cloud",
+        serde_json::json!({"locations": ["europe-"]}),
+    )]);
+    assert!(c.validate(&known_types()).is_ok());
+    let c = catalog(vec![with_params(
+        "aws-health",
+        serde_json::json!({"regions": ["eu-", "us-east-1"]}),
+    )]);
+    assert!(c.validate(&known_types()).is_ok());
+}
+
+#[test]
+fn rejects_bad_params() {
+    for s in [
+        with_params("statuspage", serde_json::json!({"locations": ["x"]})),
+        with_params("google-cloud", serde_json::json!({"regions": ["x"]})),
+        with_params("google-cloud", serde_json::json!({"locations": "europe-"})),
+        with_params("aws-health", serde_json::json!({"regions": [1]})),
+        with_params("rss-active", serde_json::json!({"x": []})),
+    ] {
+        assert!(catalog(vec![s]).validate(&known_types()).is_err());
+    }
 }

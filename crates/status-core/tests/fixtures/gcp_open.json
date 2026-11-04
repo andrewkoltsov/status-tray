@@ -1,0 +1,184 @@
+[
+ {
+  "id": "Xs2XTHzAVC9YnafnPyzj",
+  "number": "7057439711403861453",
+  "begin": "2026-10-20T06:00:00+00:00",
+  "created": "2026-10-20T08:35:37+00:00",
+  "modified": "2026-10-28T00:38:39+00:00",
+  "external_desc": "Multiple services were experiencing issues in the europe-west2 region.",
+  "updates": [
+   {
+    "created": "2026-10-27T15:13:38+00:00",
+    "modified": "2026-10-28T00:38:39+00:00",
+    "when": "2026-10-27T15:13:38+00:00",
+    "text": "## Incident Report\n### **Summary**\nOn Monday, 19 Oct 2026 (Tuesday, 20 Oct BST), a data center facility that hosts europe-west2-b, experienced an external electrical power disruption. This resulted in service unavailability for workloads located in this zone. As traffic was redirected to alternative",
+    "status": "AVAILABLE",
+    "affected_locations": []
+   },
+   {
+    "created": "2026-10-22T08:42:46+00:00",
+    "modified": "2026-10-27T15:13:38+00:00",
+    "when": "2026-10-22T08:42:46+00:00",
+    "text": "## Preliminary Incident Report\nWe recognize that Google Cloud services are critical to your organization, and we sincerely apologize for the disruption this incident may have caused to your business. We are working to address the root cause and prevent this from occurring in the future.\nPlease note,",
+    "status": "AVAILABLE",
+    "affected_locations": []
+   }
+  ],
+  "most_recent_update": {
+   "created": "2026-10-27T15:13:38+00:00",
+   "modified": "2026-10-28T00:38:39+00:00",
+   "when": "2026-10-27T15:13:38+00:00",
+   "text": "## Incident Report\n### **Summary**\nOn Monday, 19 Oct 2026 (Tuesday, 20 Oct BST), a data center facility that hosts europe-west2-b, experienced an external electrical power disruption. This resulted in service unavailability for workloads located in this zone. As traffic was redirected to alternative cloud regions or unaffected zones within europe-west2 cloud region, these workloads experienced transient latency and elevated errors affecting services across europe-west2.\u00a0\nThe primary impact was m",
+   "status": "AVAILABLE",
+   "affected_locations": []
+  },
+  "status_impact": "SERVICE_DISRUPTION",
+  "severity": "medium",
+  "service_key": "zall",
+  "service_name": "Multiple Products",
+  "affected_products": [
+   {
+    "title": "AlloyDB for PostgreSQL",
+    "id": "fPovtKbaWN9UTepMm3kJ",
+    "current_title": "AlloyDB for PostgreSQL"
+   },
+   {
+    "title": "Apigee",
+    "id": "9Y13BNFy4fJydvjdsN3X",
+    "current_title": "Apigee"
+   },
+   {
+    "title": "BigQuery Data Transfer Service",
+    "id": "UdjkJSWTHMj2b11ftW6E",
+    "current_title": "BigQuery Data Transfer Service"
+   }
+  ],
+  "uri": "incidents/Xs2XTHzAVC9YnafnPyzj",
+  "currently_affected_locations": [
+   {
+    "title": "London (europe-west2)",
+    "id": "europe-west2"
+   }
+  ],
+  "previously_affected_locations": []
+ },
+ {
+  "id": "SyntheticClosed0001",
+  "number": "2",
+  "begin": "2026-10-20T06:00:00+00:00",
+  "created": "2026-10-20T08:35:37+00:00",
+  "end": "2026-10-20T12:08:00+00:00",
+  "modified": "2026-10-28T00:38:39+00:00",
+  "external_desc": "Multiple services were experiencing issues in the europe-west2 region.",
+  "updates": [
+   {
+    "created": "2026-10-27T15:13:38+00:00",
+    "modified": "2026-10-28T00:38:39+00:00",
+    "when": "2026-10-27T15:13:38+00:00",
+    "text": "## Incident Report\n### **Summary**\nOn Monday, 19 Oct 2026 (Tuesday, 20 Oct BST), a data center facility that hosts europe-west2-b, experienced an external electrical power disruption. This resulted in service unavailability for workloads located in this zone. As traffic was redirected to alternative",
+    "status": "AVAILABLE",
+    "affected_locations": []
+   },
+   {
+    "created": "2026-10-22T08:42:46+00:00",
+    "modified": "2026-10-27T15:13:38+00:00",
+    "when": "2026-10-22T08:42:46+00:00",
+    "text": "## Preliminary Incident Report\nWe recognize that Google Cloud services are critical to your organization, and we sincerely apologize for the disruption this incident may have caused to your business. We are working to address the root cause and prevent this from occurring in the future.\nPlease note,",
+    "status": "AVAILABLE",
+    "affected_locations": []
+   }
+  ],
+  "most_recent_update": {
+   "created": "2026-10-27T15:13:38+00:00",
+   "modified": "2026-10-28T00:38:39+00:00",
+   "when": "2026-10-27T15:13:38+00:00",
+   "text": "## Incident Report\n### **Summary**\nOn Monday, 19 Oct 2026 (Tuesday, 20 Oct BST), a data center facility that hosts europe-west2-b, experienced an external electrical power disruption. This resulted in service unavailability for workloads located in this zone. As traffic was redirected to alternative cloud regions or unaffected zones within europe-west2 cloud region, these workloads experienced transient latency and elevated errors affecting services across europe-west2.\u00a0\nThe primary impact was m",
+   "status": "AVAILABLE",
+   "affected_locations": []
+  },
+  "status_impact": "SERVICE_DISRUPTION",
+  "severity": "medium",
+  "service_key": "zall",
+  "service_name": "Multiple Products",
+  "affected_products": [
+   {
+    "title": "AlloyDB for PostgreSQL",
+    "id": "fPovtKbaWN9UTepMm3kJ",
+    "current_title": "AlloyDB for PostgreSQL"
+   },
+   {
+    "title": "Apigee",
+    "id": "9Y13BNFy4fJydvjdsN3X",
+    "current_title": "Apigee"
+   },
+   {
+    "title": "BigQuery Data Transfer Service",
+    "id": "UdjkJSWTHMj2b11ftW6E",
+    "current_title": "BigQuery Data Transfer Service"
+   }
+  ],
+  "uri": "incidents/Xs2XTHzAVC9YnafnPyzj",
+  "currently_affected_locations": [],
+  "previously_affected_locations": [
+   {
+    "title": "London (europe-west2)",
+    "id": "europe-west2"
+   }
+  ]
+ },
+ {
+  "id": "SyntheticAsiaOpen0001",
+  "number": "1",
+  "begin": "2026-10-20T06:00:00+00:00",
+  "created": "2026-10-20T08:35:37+00:00",
+  "modified": "2026-10-28T00:38:39+00:00",
+  "external_desc": "Elevated latency for Cloud Storage in asia-east1.",
+  "updates": [
+   {
+    "created": "2026-10-27T15:13:38+00:00",
+    "modified": "2026-10-28T00:38:39+00:00",
+    "when": "2026-10-27T15:13:38+00:00",
+    "text": "## Incident Report\n### **Summary**\nOn Monday, 19 Oct 2026 (Tuesday, 20 Oct BST), a data center facility that hosts europe-west2-b, experienced an external electrical power disruption. This resulted in service unavailability for workloads located in this zone. As traffic was redirected to alternative",
+    "status": "AVAILABLE",
+    "affected_locations": []
+   }
+  ],
+  "most_recent_update": {
+   "created": "2026-10-27T15:13:38+00:00",
+   "modified": "2026-10-28T00:38:39+00:00",
+   "when": "2026-10-27T15:13:38+00:00",
+   "text": "## Incident Report\n### **Summary**\nOn Monday, 19 Oct 2026 (Tuesday, 20 Oct BST), a data center facility that hosts europe-west2-b, experienced an external electrical power disruption. This resulted in service unavailability for workloads located in this zone. As traffic was redirected to alternative",
+   "status": "AVAILABLE",
+   "affected_locations": []
+  },
+  "status_impact": "SERVICE_OUTAGE",
+  "severity": "high",
+  "service_key": "zall",
+  "service_name": "Multiple Products",
+  "affected_products": [
+   {
+    "title": "AlloyDB for PostgreSQL",
+    "id": "fPovtKbaWN9UTepMm3kJ",
+    "current_title": "AlloyDB for PostgreSQL"
+   },
+   {
+    "title": "Apigee",
+    "id": "9Y13BNFy4fJydvjdsN3X",
+    "current_title": "Apigee"
+   },
+   {
+    "title": "BigQuery Data Transfer Service",
+    "id": "UdjkJSWTHMj2b11ftW6E",
+    "current_title": "BigQuery Data Transfer Service"
+   }
+  ],
+  "uri": "/incidents/SyntheticAsiaOpen0001",
+  "currently_affected_locations": [
+   {
+    "title": "Taiwan (asia-east1)",
+    "id": "asia-east1"
+   }
+  ],
+  "previously_affected_locations": []
+ }
+]

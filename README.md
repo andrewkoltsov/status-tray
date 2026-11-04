@@ -57,8 +57,17 @@ running Atlassian Statuspage:
 ```
 
 - `id`: unique, `[a-z0-9-]+`, never changes (it is the settings/state key).
-- `type`: `statuspage` is the only provider for now.
-- `url`: base `https` URL; the app reads `<url>/api/v2/summary.json`.
+- `type`: provider, one of `statuspage`, `google-cloud`, `aws-health`, `rss-active`.
+- `url`: `https` URL. Its meaning depends on `type`:
+  - `statuspage`: site base URL; the app reads `<url>/api/v2/summary.json`.
+  - `google-cloud`: site base URL (`https://status.cloud.google.com`); reads `<url>/incidents.json`.
+  - `aws-health`: site base URL (`https://health.aws.amazon.com`); reads `<url>/public/currentevents`.
+  - `rss-active`: the **full feed URL** (RSS or Atom). Every entry is an active incident;
+    an entry disappearing means resolved.
+- `params` (optional object, provider-specific filters):
+  - `google-cloud`: `"locations": ["europe-"]`, location id prefixes. Incidents without a
+    specific location are global and always kept.
+  - `aws-health`: `"regions": ["eu-", "us-east-1"]`, region code prefixes.
 
 Verify the entry first (`python3 scripts/verify_services.py https://your.status.page`), then run
 `cargo test -p status-core`, which validates the whole catalog.

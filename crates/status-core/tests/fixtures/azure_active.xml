@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Azure Status</title><link>https://azure.status.microsoft/en-us/status/</link><description>Azure Status Feed</description><language>en-us</language><lastBuildDate>Tue, 04 Nov 2026 13:40:00 GMT</lastBuildDate>
+<item><title>Azure Front Door - Connectivity issues</title><link>https://azure.status.microsoft/en-us/status/#azfd-1</link><guid isPermaLink="false">AZFD-1A2B</guid><pubDate>Tue, 04 Nov 2026 12:15:00 GMT</pubDate><description>&lt;p&gt;&lt;strong&gt;Impact Statement:&lt;/strong&gt; Starting at 11:50 UTC, customers may experience&amp;nbsp;timeouts &amp;amp; errors.&lt;/p&gt;
+&lt;p&gt;We are investigating.&lt;/p&gt;</description></item>
+<item><title>Virtual Machines - West Europe</title><link>https://azure.status.microsoft/en-us/status/#vm-weu-2</link><guid isPermaLink="false">VMWEU-2C3D</guid><description>&lt;p&gt;Some customers may be unable to start VMs.&lt;/p&gt;</description></item>
+</channel></rss>

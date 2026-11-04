@@ -84,9 +84,28 @@ Parsing is separated from I/O (`fn parse(bytes) -> Result<Snapshot>`) so tests u
   `incidents[]` (unresolved) with `id, name, status, impact, shortlink, incident_updates[]`.
 - Unknown enum values → `Unknown`, never a parse failure.
 
-### 5.2 Future providers (not MVP)
+### 5.2 `google-cloud`
 
-`rss`/`atom` generic fallback, `incidentio`, `google-cloud`, `aws-health`.
+- `GET {url}/incidents.json`; open incidents only (`end` missing/null). No components.
+- `status_impact` SERVICE_OUTAGE/DISRUPTION/INFORMATION → Major/Minor/None; update id = `most_recent_update.modified`.
+- `params.locations`: id prefixes matched against `currently_affected_locations`; no locations = global, kept.
+
+### 5.3 `aws-health`
+
+- `GET {url}/public/currentevents`; body is UTF-16 JSON (BOM or BOM-less detected, UTF-8 fallback).
+- Every event with `status != "0"` is an incident (1/2/3 → Minor/Major/Critical); id = ARN; updates from `event_log`.
+- `params.regions`: region prefixes matched against the ARN region; events without a region are kept.
+
+### 5.4 `rss-active`
+
+- `GET {url}` where `url` is the full RSS/Atom feed URL (Azure's feed lists only active incidents).
+- Each entry = active incident (impact Major); disappearing from the feed = resolved. Update id = entry timestamp or a hash of the summary.
+
+### 5.5 Future providers (not MVP)
+
+`incidentio`, generic history-bearing `rss`/`atom`.
+
+`params` (optional JSON object on a catalog entry) carries provider options; unknown keys are rejected by catalog validation.
 
 ## 6. Normalized model
 

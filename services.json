@@ -16,6 +16,12 @@
     {"id": "jira", "name": "Jira (Atlassian)", "type": "statuspage", "url": "https://jira-software.status.atlassian.com"},
     {"id": "confluence", "name": "Confluence (Atlassian)", "type": "statuspage", "url": "https://confluence.status.atlassian.com"},
     {"id": "jira-service-management", "name": "Jira Service Management (Atlassian)", "type": "statuspage", "url": "https://jira-service-management.status.atlassian.com"},
-    {"id": "trello", "name": "Trello (Atlassian)", "type": "statuspage", "url": "https://trello.status.atlassian.com"}
+    {"id": "trello", "name": "Trello (Atlassian)", "type": "statuspage", "url": "https://trello.status.atlassian.com"},
+    {"id": "gcp", "name": "Google Cloud", "type": "google-cloud", "url": "https://status.cloud.google.com"},
+    {"id": "gcp-europe", "name": "Google Cloud (Europe)", "type": "google-cloud", "url": "https://status.cloud.google.com", "params": {"locations": ["europe-"]}},
+    {"id": "aws", "name": "AWS (all regions)", "type": "aws-health", "url": "https://health.aws.amazon.com"},
+    {"id": "aws-us-east-1", "name": "AWS us-east-1", "type": "aws-health", "url": "https://health.aws.amazon.com", "params": {"regions": ["us-east-1"]}},
+    {"id": "aws-europe", "name": "AWS Europe", "type": "aws-health", "url": "https://health.aws.amazon.com", "params": {"regions": ["eu-"]}},
+    {"id": "azure", "name": "Microsoft Azure", "type": "rss-active", "url": "https://azure.status.microsoft/en-us/status/feed/"}
   ]
 }

@@ -6,6 +6,8 @@ pub enum Error {
     Status(u16),
     #[error("invalid JSON: {0}")]
     Parse(#[from] serde_json::Error),
+    #[error("invalid feed: {0}")]
+    Feed(String),
     #[error("invalid catalog: {0}")]
     Catalog(String),
 }

@@ -8,6 +8,7 @@ description = "Pure status-page logic: catalog, providers, normalized model, cha
 [dependencies]
 async-trait = "0.1"
 chrono = { version = "0.4", default-features = false, features = ["clock", "serde", "std"] }
+feed-rs = "3.0.0"
 log = "0.4"
 reqwest = { version = "0.12", default-features = false, features = ["rustls-tls"] }
 semver = "1"

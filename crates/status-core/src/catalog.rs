@@ -18,6 +18,9 @@ pub struct Service {
     #[serde(rename = "type")]
     pub service_type: String,
     pub url: String,
+    /// Provider-specific options (e.g. `locations` for `google-cloud`, `regions` for `aws-health`).
+    #[serde(default, skip_serializing_if = "serde_json::Map::is_empty")]
+    pub params: serde_json::Map<String, serde_json::Value>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -75,6 +78,7 @@ impl Catalog {
             if !known_types.contains(&s.service_type.as_str()) {
                 problems.push(format!("'{}': unknown type '{}'", s.id, s.service_type));
             }
+            validate_params(s, &mut problems);
             match reqwest::Url::parse(&s.url) {
                 Ok(u) if u.scheme() == "https" && u.host_str().is_some() => {}
                 _ => problems.push(format!("'{}': url must be a valid https URL", s.id)),
@@ -84,6 +88,35 @@ impl Catalog {
             Ok(())
         } else {
             Err(Error::Catalog(problems.join("; ")))
+        }
+    }
+}
+
+/// Param keys each provider understands; every value must be a list of strings.
+fn allowed_param_keys(service_type: &str) -> &'static [&'static str] {
+    match service_type {
+        "google-cloud" => &["locations"],
+        "aws-health" => &["regions"],
+        _ => &[],
+    }
+}
+
+fn validate_params(s: &Service, problems: &mut Vec<String>) {
+    let allowed = allowed_param_keys(&s.service_type);
+    for (k, v) in &s.params {
+        if !allowed.contains(&k.as_str()) {
+            problems.push(format!(
+                "'{}': unknown param '{}' for type '{}'",
+                s.id, k, s.service_type
+            ));
+        } else if !v
+            .as_array()
+            .is_some_and(|a| a.iter().all(serde_json::Value::is_string))
+        {
+            problems.push(format!(
+                "'{}': param '{}' must be a list of strings",
+                s.id, k
+            ));
         }
     }
 }
