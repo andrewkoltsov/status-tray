@@ -31,3 +31,13 @@ jobs:
       - run: cargo clippy --workspace --all-targets -- -D warnings
       - run: cargo test -p status-core
       - run: cargo check -p status-tray
+
+  catalog:
+    # Every entry in services.json must serve valid Statuspage JSON.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/verify_services.py
+      - name: Probe extra candidates (informational)
+        continue-on-error: true
+        run: python3 scripts/verify_services.py --candidates
