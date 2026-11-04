@@ -10,7 +10,7 @@ use crate::state::Shared;
 use crate::tray;
 
 /// Placeholder until the repository has a real owner.
-pub const GITHUB_OWNER: &str = "OWNER";
+pub const GITHUB_OWNER: &str = "andrewkoltsov";
 pub const GITHUB_REPO: &str = "status-tray";
 
 const CHECK_EVERY: Duration = Duration::from_secs(24 * 60 * 60);

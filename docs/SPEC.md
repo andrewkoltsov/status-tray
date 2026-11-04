@@ -169,7 +169,7 @@ Hidden at start; opened from tray. Closing hides it (app keeps running).
 - Interval select.
 - "Launch at login" toggle (autostart plugin).
 - Footer: app version, "Missing a service? Request it" → opens
-  `https://github.com/OWNER/status-tray/issues/new?template=service-request.yml`,
+  `https://github.com/andrewkoltsov/status-tray/issues/new?template=service-request.yml`,
   "Releases" link, update notice if any.
 - Changes apply immediately (no Save button).
 
@@ -185,7 +185,7 @@ IPC commands: `get_catalog`, `get_settings`, `set_enabled(service_id, bool)`,
 
 ## 13. Updates
 
-On startup and every 24 h: `GET https://api.github.com/repos/OWNER/status-tray/releases/latest`,
+On startup and every 24 h: `GET https://api.github.com/repos/andrewkoltsov/status-tray/releases/latest`,
 compare semver with the app version, show notice in tray + settings. No auto-install in MVP.
 
 ## 14. CI / release
@@ -214,6 +214,6 @@ compare semver with the app version, show notice in tray + settings. No auto-ins
 
 ## 17. Open questions
 
-- App name / bundle id / GitHub owner (placeholders: `status-tray`, `OWNER`).
+- App name / bundle id / GitHub owner (placeholders: `status-tray`, `andrewkoltsov`).
 - Per-service component filter (e.g. only GitHub "Git Operations", "Actions") — likely v0.2.
 - Git pre-push hook companion (reads the app's state file or hits the API directly) — v0.2+.
